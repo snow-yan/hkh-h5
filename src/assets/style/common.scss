@@ -1,0 +1,110 @@
+
+// 主题色
+$color:#FF6B60;
+$backColor:#4584FF;
+$white:#ffffff;
+.backColor{
+    background: $backColor!important;
+}
+.white{
+    background:#ffffff;
+}
+.color{
+    color: $color!important;
+}
+
+.p30{
+    padding: 16px 15px;
+}
+// margin值
+@for $i from 1 through 50 {
+    .mt#{$i} { margin-top: 0.1rem * $i; }
+}
+@for $i from 1 through 50 {
+    .mb#{$i} { margin-bottom: 0.1rem * $i; }
+}
+@for $i from 1 through 50 {
+    .ml#{$i} { margin-left: 0.1rem * $i; }
+}
+@for $i from 1 through 50 {
+    .mr#{$i} { margin-right: 0.1rem * $i; }
+}
+
+// padding值
+@for $i from 1 through 50 {
+     .pt#{$i} { padding-top: 0.1rem * $i; }
+}
+@for $i from 1 through 50 {
+.pb#{$i} { padding-bottom: 0.1rem * $i; }
+}
+@for $i from 1 through 50 {
+     .pl#{$i} { padding-left: 0.1rem * $i; }
+}
+@for $i from 1 through 50 {
+     .pr#{$i} { padding-right: 0.1rem * $i; }
+}
+         
+// font-size
+@for $i from 12 through 30 {
+      .font#{$i} { font-size:  #{$i}px; }
+   }
+   @for $i from 4 through 6 {
+    .fw#{$i} { font-weight:$i*100; }
+ }
+ .c6{
+     color: #666666;
+
+ }
+.c9{
+     color: #999999;
+     
+ }
+ .c3{
+    color: #333333;
+    
+}
+
+
+
+.flex{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    
+    
+}
+.Center{
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+.Between{
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+.Start {
+    justify-content:flex-start;
+    -webkit-justify-content:flex-start;
+}
+.End{
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end
+}
+.column{
+    flex-direction: column;
+    -webkit-flex-direction: column;
+}
+/* 超出一行隐藏 */
+.hidden{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+/* 超出2行隐藏 */
+.hidden2{
+   display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
