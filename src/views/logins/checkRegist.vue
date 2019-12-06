@@ -1,21 +1,37 @@
 <template>
-    <div>
-        <Header-view :headerMsg='headerMsg' />
-        <Login-common>
-            <div slot="item">
-                <div class='inputbox flex'>
-                    <img src='../../assets/images/homepage/phnoe_png.png' />
-                    <input placeholder='输入手机号/用户名' name='username'  v-model='obj.tel' />
-                </div>
-                <div class='inputbox flex Between'>
-                    <img src='../../assets/images/homepage/key_png.png' class='suo' />
-                    <input placeholder='输入验证码' type="password" name='password' style="width: 60%"  v-model='obj.imgCode'/>
-                    <img :src="src" alt="" width="80" @click='changeImgcode'>
-                </div>
-                <button class='loginbtn ' @click='tijiaoCheck'>验证</button>
-            </div>
-        </Login-common>
-    </div>
+  <div>
+    <Header-view :header-msg='headerMsg' />
+    <Login-common>
+      <div slot="item">
+        <div class='inputbox flex'>
+          <img src='../../assets/images/homepage/phnoe_png.png' >
+          <input 
+            placeholder='输入手机号/用户名' 
+            name='username' 
+            v-model='obj.tel' >
+        </div>
+        <div class='inputbox flex Between'>
+          <img 
+            src='../../assets/images/homepage/key_png.png' 
+            class='suo' >
+          <input 
+            placeholder='输入验证码' 
+            type="password" 
+            name='password' 
+            style="width: 60%" 
+            v-model='obj.imgCode'>
+          <img 
+            :src="src" 
+            alt="" 
+            width="80" 
+            @click='changeImgcode'>
+        </div>
+        <button 
+          class='loginbtn ' 
+          @click='tijiaoCheck'>验证</button>
+      </div>
+    </Login-common>
+  </div>
 </template>
 <script>
     import HeaderView from '../../components/header'

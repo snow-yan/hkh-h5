@@ -1,16 +1,18 @@
 <template>
-    <div>
-            <div class="p30 ">
-                <div class='container'>
-                    <div class='topbox'>
-                        <img src='../assets/images/login/logo_haokuaihuo@2x.png' class='hkhIcon' />
-                    </div>
-                    <div class='contentbox'>
-                        <slot name="item"></slot>
-                    </div>
-                </div>
-            </div>
+  <div>
+    <div class="p30 ">
+      <div class='container'>
+        <div class='topbox'>
+          <img 
+            src='../assets/images/login/logo_haokuaihuo@2x.png' 
+            class='hkhIcon' >
+        </div>
+        <div class='contentbox'>
+          <slot name="item"/>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
    

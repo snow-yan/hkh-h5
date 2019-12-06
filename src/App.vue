@@ -1,9 +1,9 @@
 <template>
-    <div id="app">
+  <div id="app">
 
-        <router-view />
+    <router-view />
 
-    </div>
+  </div>
 </template>
 <script>
 
@@ -52,7 +52,9 @@
     .tl {
         text-align: left
     }
-
+    .tc{
+        text-align: center
+    }
     .borderBottom {
         position: relative;
     }

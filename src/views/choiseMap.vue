@@ -1,7 +1,7 @@
 <template>
-    <div>
-            <Map></Map>
-    </div>
+  <div>
+    <Map/>
+  </div>
 </template>
 <script>
      import Map from '../components/map.vue';

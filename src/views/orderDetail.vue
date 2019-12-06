@@ -1,80 +1,124 @@
 <template>
-    <div>
-        <Header-view :headerMsg='headerMsg' />
+  <div>
+    <Header-view :header-msg='headerMsg' />
 
-        <router-link :to='{path:"/adresslist"}'>
-            <div id="adres" class="p30 flex Between">
-                <ul class="adrLeft mr8">
-                    <li class="flex Start pb9 ">
-                        <img src="../assets/images/homepage/home_man_icon@2x.png" alt="" class="icon_Person mr4">
-                        <span class="font16 fw6 c3">{{address.username?address.username:"请添加常用收货人"}} <span
-                                class="fw5 c6 ml3" v-if='address.address'>{{address.phone}}</span></span>
-                    </li>
-                    <li class="flex Start fw4">
-                        <img src="../assets/images/homepage/home_local_icon@2x.png" alt="" class="icon_Person mr4">
-                        <span class="c3 font14 hidden2 tl">{{address.address?address.address:"请添加常用收货地址"}}</span>
-                    </li>
-                </ul>
-
-                <div class="adrRight">
-                    <img src="../assets/images/homepage/home_smallmore_icon@2x.png" alt="" />
-                </div>
-            </div>
-        </router-link>
-
-        <ul class="shopList  mt5">
-            <li class="list p30 flex Start borderBottom" v-for='(item,index) in msg' :key='index' :msg='msg'>
-                <img :src="item.url" alt="" class="shopImg">
-                <ul class="ml10 listMes flex Between">
-                    <li class="font16 fw6 c3">{{item.saleName}}</li>
-                    <li class="flex Between">
-                        <span class="color font18 "><span class="font14 color">￥</span>{{item.xsprice}}</span>
-                        <span>× {{item.nums}}</span>
-
-                    </li>
-                </ul>
-            </li>
+    <router-link :to='{path:"/adresslist"}'>
+      <div 
+        id="adres" 
+        class="p30 flex Between">
+        <ul class="adrLeft mr8">
+          <li class="flex Start pb9 ">
+            <img 
+              src="../assets/images/homepage/home_man_icon@2x.png" 
+              alt="" 
+              class="icon_Person mr4">
+            <span class="font16 fw6 c3">{{ address.username?address.username:"请添加常用收货人" }} <span
+              class="fw5 c6 ml3" 
+              v-if='address.address'>{{ address.phone }}</span></span>
+          </li>
+          <li class="flex Start fw4">
+            <img 
+              src="../assets/images/homepage/home_local_icon@2x.png" 
+              alt="" 
+              class="icon_Person mr4">
+            <span class="c3 font14 hidden2 tl">{{ address.address?address.address:"请添加常用收货地址" }}</span>
+          </li>
         </ul>
-        <!-- <van-field readonly clickable label="配送时间" :value="value" placeholder="" @click="showPicker = true" /> -->
-        <ul class="pt8 pb8 pl10 pr10 flex Between box mt5 borderBottom" @click="checkTimes">
-            <li class="font16 fw6">配送时间</li>
-            <li class="flex">
-                <span class="font14">{{yyTime?yyTime:'立即配送'}}</span>
-                <img src="../assets/images/homepage/home_smallmore_icon@2x.png" alt="" width="10" class="ml5" />
-            </li>
+
+        <div class="adrRight">
+          <img 
+            src="../assets/images/homepage/home_smallmore_icon@2x.png" 
+            alt="" >
+        </div>
+      </div>
+    </router-link>
+
+    <ul class="shopList  mt5">
+      <li 
+        class="list p30 flex Start borderBottom" 
+        v-for='(item,index) in msg' 
+        :key='index' 
+        :msg='msg'>
+        <img 
+          :src="item.url" 
+          alt="" 
+          class="shopImg">
+        <ul class="ml10 listMes flex Between">
+          <li class="font16 fw6 c3">{{ item.saleName }}</li>
+          <li class="flex Between">
+            <span class="color font18 "><span class="font14 color">￥</span>{{ item.xsprice }}</span>
+            <span>× {{ item.nums }}</span>
+
+          </li>
         </ul>
-        <ul class="pt8 pb8 pl10 pr10 flex Between box ">
-            <li class="font16 fw6">实付款</li>
-            <li class="flex">
-                <span class="font20 color fw6"> <span class="font12">￥</span> {{address.disbursements}}</span>
-            </li>
-        </ul>
-        <ul class=" pl10 pr10  box  borderBottom mt5">
-            <li class="font16 fw6 pt8 pb8">选择支付方式</li>
-            <li>
-                <van-radio-group v-model="radio" @change='changeRadio'>
-                    <van-cell-group>
-                        <van-cell title="微信支付" clickable @click="radio = '1'">
-                            <van-radio slot="right-icon" name="1" />
-                        </van-cell>
-                        <van-cell title="支付宝支付" clickable @click="radio = '2'">
-                            <van-radio slot="right-icon" name="2" />
-                        </van-cell>
-                        <!-- <van-cell title="龙支付" clickable @click="radio = '3'">
+      </li>
+    </ul>
+    <!-- <van-field readonly clickable label="配送时间" :value="value" placeholder="" @click="showPicker = true" /> -->
+    <ul 
+      class="pt8 pb8 pl10 pr10 flex Between box mt5 borderBottom" 
+      @click="checkTimes">
+      <li class="font16 fw6">配送时间</li>
+      <li class="flex">
+        <span class="font14">{{ yyTime?yyTime:'立即配送' }}</span>
+        <img 
+          src="../assets/images/homepage/home_smallmore_icon@2x.png" 
+          alt="" 
+          width="10" 
+          class="ml5" >
+      </li>
+    </ul>
+    <ul class="pt8 pb8 pl10 pr10 flex Between box ">
+      <li class="font16 fw6">实付款</li>
+      <li class="flex">
+        <span class="font20 color fw6"> <span class="font12">￥</span> {{ address.disbursements }}</span>
+      </li>
+    </ul>
+    <ul class=" pl10 pr10  box  borderBottom mt5">
+      <li class="font16 fw6 pt8 pb8">选择支付方式</li>
+      <li>
+        <van-radio-group 
+          v-model="radio" 
+          @change='changeRadio'>
+          <van-cell-group>
+            <van-cell 
+              title="微信支付" 
+              clickable 
+              @click="radio = '1'">
+              <van-radio 
+                slot="right-icon" 
+                name="1" />
+            </van-cell>
+            <van-cell 
+              title="支付宝支付" 
+              clickable 
+              @click="radio = '2'">
+              <van-radio 
+                slot="right-icon" 
+                name="2" />
+            </van-cell>
+            <!-- <van-cell title="龙支付" clickable @click="radio = '3'">
                             <van-radio slot="right-icon" name="3" />
                         </van-cell> -->
-                    </van-cell-group>
-                </van-radio-group>
-            </li>
-        </ul>
-        <!-- 配送时间picker -->
-        <van-popup v-model="showPicker" position="bottom">
-            <van-picker show-toolbar :columns='time' @change="onChange" @confirm='onConfirm'
-                @cancel='showPicker = false' />
-        </van-popup>
-        <div style="height: 45px;"></div>
-        <van-button type="info" @click='payWay'>立即支付</van-button>
-    </div>
+          </van-cell-group>
+        </van-radio-group>
+      </li>
+    </ul>
+    <!-- 配送时间picker -->
+    <van-popup 
+      v-model="showPicker" 
+      position="bottom">
+      <van-picker 
+        show-toolbar 
+        :columns='time' 
+        @change="onChange" 
+        @confirm='onConfirm'
+        @cancel='showPicker = false' />
+    </van-popup>
+    <div style="height: 45px;"/>
+    <van-button 
+      type="info" 
+      @click='payWay'>立即支付</van-button>
+  </div>
 </template>
 <script>
     import HeaderView from '../components/header';

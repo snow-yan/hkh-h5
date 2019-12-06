@@ -1,24 +1,43 @@
 <template>
-        <div>
-            <Header-view :headerMsg='headerMsg' />
-            <Login-common>
-                <div slot="item">
+  <div>
+    <Header-view :header-msg='headerMsg' />
+    <Login-common>
+      <div slot="item">
                    
-                    <div class='inputbox flex Between'>
-                        <img src='../../assets/images/homepage/yanzhengmma_png.png' class='suo' />
-                        <input placeholder='请输入验证码' type="password" name='password' style="width: 55%"  v-model='vercode'/>
-                        <!-- <van-button type="info">获取验证码</van-button> -->
-                        <van-button slot="button" size="small" type="info" @click='showTime' v-if='TimesShow'>发送验证码</van-button>
-                        <div v-else class="flex font12">
-                                <van-count-down :time="time"  format="ss"  @finish="showTime"/>s后重新获取
-                        </div>
+        <div class='inputbox flex Between'>
+          <img 
+            src='../../assets/images/homepage/yanzhengmma_png.png' 
+            class='suo' >
+          <input 
+            placeholder='请输入验证码' 
+            type="password" 
+            name='password' 
+            style="width: 55%" 
+            v-model='vercode'>
+          <!-- <van-button type="info">获取验证码</van-button> -->
+          <van-button 
+            slot="button" 
+            size="small" 
+            type="info" 
+            @click='showTime' 
+            v-if='TimesShow'>发送验证码</van-button>
+          <div 
+            v-else 
+            class="flex font12">
+            <van-count-down 
+              :time="time" 
+              format="ss" 
+              @finish="showTime"/>s后重新获取
+          </div>
                         
-                    </div>
-                    <button class='loginbtn mt10' @click='checkCode'>验证</button>
-                </div>
-            </Login-common>
         </div>
-    </template>
+        <button 
+          class='loginbtn mt10' 
+          @click='checkCode'>验证</button>
+      </div>
+    </Login-common>
+  </div>
+</template>
     <script>
         import HeaderView from '../../components/header'
         import LoginCommon from '../../components/loginCom.vue'

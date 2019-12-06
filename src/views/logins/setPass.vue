@@ -1,19 +1,26 @@
 <template>
-    <div>
+  <div>
 
 
-        <Header-view :headerMsg='headerMsg' />
-        <Login-common>
-            <div slot="item">
-                <div class='inputbox flex'>
-                    <img src='../../assets/images/homepage/key_png.png' class='suo' />
-                    <input placeholder='输入8-16位密码' type="password"  v-model='password' />
-                </div>
-                <button class='loginbtn mt10' @click='setPass'>确认</button>
-            </div>
+    <Header-view :header-msg='headerMsg' />
+    <Login-common>
+      <div slot="item">
+        <div class='inputbox flex'>
+          <img 
+            src='../../assets/images/homepage/key_png.png' 
+            class='suo' >
+          <input 
+            placeholder='输入8-16位密码' 
+            type="password" 
+            v-model='password' >
+        </div>
+        <button 
+          class='loginbtn mt10' 
+          @click='setPass'>确认</button>
+      </div>
 
-        </Login-common>
-    </div>
+    </Login-common>
+  </div>
 </template>
 <script>
     import HeaderView from '../../components/header'

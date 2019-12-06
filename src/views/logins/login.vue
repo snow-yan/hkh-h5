@@ -1,28 +1,39 @@
 <template>
         
-    <div>
-            <Header-view :headerMsg='headerMsg' />
-            <Login-common>
-                <div slot="item">
-                <div class='inputbox flex '>
-                    <img src='../../assets/images/homepage/phnoe_png.png' />
-                    <input placeholder='输入手机号/用户名' name='username' v-model='username' />
-                </div>
-                <div class='inputbox flex'>
-                    <img src='../../assets/images/homepage/key_png.png' class='suo' />
-                    <input placeholder='输入8-16位密码' type="password" name='password' v-model='password' />
-                </div>
-                <div class='caozuo flex Between'>
-                    <span @click='forgetPass'>忘记密码</span>
-                    <span @click='goCheck'>手机号注册</span>
-                </div>
-            
-            <!-- <div class='loginbtn' catchtap='tologin'>登录</div> -->
-            <button class='loginbtn ' @click='userLogin'>登录</button>
-            <!-- </form> -->
+  <div>
+    <Header-view :header-msg='headerMsg' />
+    <Login-common>
+      <div slot="item">
+        <div class='inputbox flex '>
+          <img src='../../assets/images/homepage/phnoe_png.png' >
+          <input 
+            placeholder='输入手机号/用户名' 
+            name='username' 
+            v-model='username' >
         </div>
+        <div class='inputbox flex'>
+          <img 
+            src='../../assets/images/homepage/key_png.png' 
+            class='suo' >
+          <input 
+            placeholder='输入8-16位密码' 
+            type="password" 
+            name='password' 
+            v-model='password' >
+        </div>
+        <div class='caozuo flex Between'>
+          <span @click='forgetPass'>忘记密码</span>
+          <span @click='goCheck'>手机号注册</span>
+        </div>
+            
+        <!-- <div class='loginbtn' catchtap='tologin'>登录</div> -->
+        <button 
+          class='loginbtn ' 
+          @click='userLogin'>登录</button>
+          <!-- </form> -->
+      </div>
     </Login-common>
-    </div>
+  </div>
 </template>
 
 <script>

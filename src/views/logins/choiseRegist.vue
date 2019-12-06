@@ -1,17 +1,23 @@
 <template>
-    <div>
+  <div>
 
    
     <div class='container'>
-        <div class='contentbox flex Center column'>
-          <div class='userimg'><img src="" mode='widthFix'/></div>
-          <!-- <div class='username'>好快活</div> -->
-          <div class='contentext'>手机号{{tel}}已绑定好快活商城账号，请确定是否授权登陆</div>
-          <div class='btnbox' @click='yonghuLogin'>授权登陆</div>
-          <div class='btnbox' @click='newRegin'>重新注册</div>
-        </div>
+      <div class='contentbox flex Center column'>
+        <div class='userimg'><img 
+          src="" 
+          mode='widthFix'></div>
+        <!-- <div class='username'>好快活</div> -->
+        <div class='contentext'>手机号{{ tel }}已绑定好快活商城账号，请确定是否授权登陆</div>
+        <div 
+          class='btnbox' 
+          @click='yonghuLogin'>授权登陆</div>
+        <div 
+          class='btnbox' 
+          @click='newRegin'>重新注册</div>
       </div>
     </div>
+  </div>
 </template>
 <script>
 export default {

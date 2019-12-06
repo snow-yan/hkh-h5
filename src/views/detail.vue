@@ -1,30 +1,30 @@
 <template>
     <div class="white">
-        <Header-view :headerMsg='headerMsg' />
+        <Header-view :header-msg='headerMsg' />
 
         <div class="banner">
             <van-swipe>
                 <van-swipe-item v-for="(image, index) in swiperImg" :key="index">
-                    <img :src='image' />
+                    <img :src='image'>
                 </van-swipe-item>
             </van-swipe>
         </div>
         <ul class=" pt5 pl10 pr10 pb5 pl10 pr10 borderBottom">
-            <li class="tl font16 fw6">{{detailMes.salename}}</li>
-            <li class="flex Between font12 fw4 mt5"> <span>{{detailMes.keys}}</span> <span class="color font20"> <span
-                        class="font16">￥</span>{{detailMes.xsprice}}</span></li>
+            <li class="tl font16 fw6">{{ detailMes.salename }}</li>
+            <li class="flex Between font12 fw4 mt5"> <span>{{ detailMes.keys }}</span> <span class="color font20"> <span
+                        class="font16">￥</span>{{ detailMes.xsprice }}</span></li>
         </ul>
         <ul class="guige pt5">
             <li class="flex Between pl10 pr10 pb5 detailList" @click='clickShow'>
                 <div class="c3 font14">已选</div>
-                <div style="width: 70%" class="tl c6 font12"> {{detailMes.propValues}} </div>
-                <div><span class="font12">X{{value}}</span> <img src="../assets/images/homepage/home_more_icon_png@2x.png"
-                        alt="" width="8" class="ml10"></div>
+                <div style="width: 70%" class="tl c6 font12"> {{ detailMes.propValues }} </div>
+                <div><span class="font12">X{{ value }}</span> <img
+                        src="../assets/images/homepage/home_more_icon_png@2x.png" alt="" width="8" class="ml10"></div>
             </li>
             <li class="flex Between pl10 pr10 pb5 detailList">
                 <div class="c3 font14">积分</div>
-                <div style="width: 70%" class="tl c6 font12"> {{detailMes.canusejf}} </div>
-                <div><img src="../assets/images/homepage/home_more_icon_png@2x.png" alt="" width="8" class="ml10" /></div>
+                <div style="width: 70%" class="tl c6 font12"> {{ detailMes.canusejf }} </div>
+                <div><img src="../assets/images/homepage/home_more_icon_png@2x.png" alt="" width="8" class="ml10"></div>
             </li>
             <li class="flex Between pl10 pr10 pb5 detailList">
                 <div class="c3 font14">优惠券</div>
@@ -35,25 +35,25 @@
             </li>
             <li class="flex Between pl10 pr10 pb5 detailList">
                 <div class="c3 font14">包邮</div>
-                <div style="width: 70%" class="tl c6 font12"> {{detailMes.baoyou}} </div>
+                <div style="width: 70%" class="tl c6 font12"> {{ detailMes.baoyou }} </div>
                 <div><span class="font12">X1</span> <img src="../assets/images/homepage/home_more_icon_png@2x.png"
                         alt="" width="8" class="ml10"></div>
             </li>
             <li class="flex Between pl10 pr10 pb5 detailList">
                 <div class="c3 font14">总金额</div>
-                <div style="width: 70%" class="tl c6 font12"></div>
-                <div class="color font16 fw6"> ￥{{total}}</div>
+                <div style="width: 70%" class="tl c6 font12" />
+                <div class="color font16 fw6"> ￥{{ total }}</div>
             </li>
 
         </ul>
         <van-popup v-model="show" position="bottom" :style="{ height: '60%' }">
             <div style='width:100%;height:100%;position:relative;'>
                 <div class='waterLists flex borderBottom p30 flexStart'>
-                    <img :src='swiperImg[0]' class='shopWater' />
+                    <img :src='swiperImg[0]' class='shopWater'>
                     <div class='waterDesc flex ml10 '>
-                        <div class='font14 hidden'>{{detailMes.salename}}</div>
+                        <div class='font14 hidden'>{{ detailMes.salename }}</div>
                         <div class='mesName3 hidden color'>
-                            ￥{{detailMes.xsprice}}
+                            ￥{{ detailMes.xsprice }}
                         </div>
                     </div>
                 </div>
@@ -62,25 +62,25 @@
                         <div class='title'>购买数量</div>
                         <div class='ml10'>
                             <div class='waterNumber flex'>
-                                <div class='flex'  @click='bindMinus'>
-                                    <img src='../assets/images/homepage/water_icon_reduce@2x.png' /> 
+                                <div class='flex' @click='bindMinus'>
+                                    <img src='../assets/images/homepage/water_icon_reduce@2x.png'>
                                 </div>
                                 <div class='flex watN '>
-                                    <input class='center' type='number' v-model='value' @blur='bindInput' />
+                                    <input class='center' type='number' v-model='value' @blur='bindInput'>
                                 </div>
                                 <div class='flex' @click='bindPlus'>
-                                    <img src='../assets/images/homepage/water_icon_add@2x.png' />
+                                    <img src='../assets/images/homepage/water_icon_add@2x.png'>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class='flex flexStart  ggList' v-for='(item,index) in guige' :key='index'>
-                        <div class='title'>{{item.classSpecName}}</div>
+                        <div class='title'>{{ item.classSpecName }}</div>
                         <div class='ml10 rl flex flexStart ' style='flex-wrap:wrap;'>
-                            <span v-for='(itm,idx) in item.classSpecValues' :key='idx' v-bind:class=' {active:itm.isTrue}'
+                            <span v-for='(itm,idx) in item.classSpecValues' :key='idx' :class=' {active:itm.isTrue}'
                                 class="prop mr10">
-                                {{itm.classSpecValue}}
+                                {{ itm.classSpecValue }}
                             </span>
 
 
@@ -91,8 +91,8 @@
                 <!-- <div class='addShopCar ' @click='addShopCars'>添加购物车</div> -->
             </div>
         </van-popup>
-        <div v-html="detailImg" class="imgDetail"></div>
-        <div style="height: 45px;"></div>
+        <div v-html="detailImg" class="imgDetail" />
+        <div style="height: 45px;" />
         <div class='addShopCar fixed ' @click='addShopCars'>添加购物车</div>
     </div>
 </template>
@@ -101,7 +101,7 @@
     import { getShop } from '../api/api';
     import HeaderView from '../components/header';
     export default {
-        name: 'detail',
+        name: 'Detail',
         data() {
             return {
                 headerMsg: {
@@ -118,8 +118,8 @@
                 show: false, //规格显示
                 guige: {}, //规格
                 value: 1,
-                total:0,
-                ids:{},
+                total: 0,
+                ids: {},
                 users: JSON.parse(localStorage.getItem('user')),
             }
         },
@@ -130,15 +130,21 @@
             [Popup.name]: Popup
 
         },
+        props: ['msg'],
+        // props: {
+        //     msg: {
+        //         type: Object,
+        //         default: null
+        //     }
+        // },
         created() {
-            let msg = this.$route.params.pid ? this.$route.params : (JSON.parse(localStorage.getItem('detailId')));
+            let msg = this.$route.query.pid ? this.$route.query : (JSON.parse(localStorage.getItem('detailId')));
             this.ids = msg
-           // console.log(msg)
             this.getSwiper(msg);
             this.getImg(msg);
             this.getGuige(msg)
         },
-        props: ['msg'],
+
         watch: {
             msg: {
                 handler() {
@@ -190,27 +196,27 @@
             clickShow() {
                 this.show = !this.show;
             },
-            bindPlus(){
+            bindPlus() {
                 this.value++;
                 this.pay()
             },
-            bindMinus(){
-               
-                if(this.value>1){
+            bindMinus() {
+
+                if (this.value > 1) {
                     this.value--;
                 }
                 this.pay()
-               
+
             },
-            bindInput(){
+            bindInput() {
 
                 this.pay();
             },
-            pay(){
-                if(this.value>999){
-                    this.value = 999 ;
+            pay() {
+                if (this.value > 999) {
+                    this.value = 999;
                 }
-                if (this.value< 1) { this.value = 1; }
+                if (this.value < 1) { this.value = 1; }
                 const price = this.detailMes.hdprice ? this.detailMes.hdprice : this.detailMes.xsprice;
                 this.total = this.value * price;
             },
@@ -398,7 +404,8 @@
         width: 15px;
         height: 15px;
     }
-    .fixed{
+
+    .fixed {
         position: fixed;
         bottom: 0;
         left: 0;

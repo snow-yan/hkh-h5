@@ -1,51 +1,75 @@
 <template>
-    <div>
-        <Header-view :headerMsg='headerMsg' />
-        <van-radio-group v-model="radio">
-            <div class='addressbox mb5' v-for='(item,index) in list ' :key='index'>
-                <div class='addressMes flex box' @click='choiceAddress(item)'>
-                    <div class='adLeft'>
-                        <div class='flex adList'>
-                            <div class=''>
-                                <img src='../assets/images/homepage/home_man_icon@2x.png' mode='widthFix' />
-                            </div>
-                            <div class='ml10 flex '>
-                                <div class='c3 font16 hidden' style='max-width:330px;'>{{item.contactName}}</div>
-                                <span class='mesTel'>{{item.contactTel}}</span>
-                            </div>
-                        </div>
-                        <div class='flex adList mt5'>
-                            <div>
-                                <img src='../assets/images/homepage/home_local_icon@2x.png' mode='widthFix' />
-                            </div>
-                            <div class='ml10'>
-                                <span
-                                    class='mesAdr hidden2 font13 c6'>{{item.province}}{{item.city}}{{item.district}}{{item.location}}{{item.address}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='operationbox flex Between mt5'>
-                    <div class='operchoose' catchtap='ToDefault'>
-                        <van-radio :name="item" @click='radioChecked'>
-                            <div class='ml3 font14 c6'>设为默认地址</div>
-                        </van-radio>
-                    </div>
-
-                    <div class='operdo flex' wx:else>
-                        <div catchtap='thisss' class="font12" @click='editAddress(item.id)'>编辑</div>
-                        <img src='../assets/images/homepage/del-icon@2x.png' class='delAddress'
-                            @click='delAddress(item.id)' />
-                    </div>
-                </div>
+  <div>
+    <Header-view :header-msg='headerMsg' />
+    <van-radio-group v-model="radio">
+      <div 
+        class='addressbox mb5' 
+        v-for='(item,index) in list ' 
+        :key='index'>
+        <div 
+          class='addressMes flex box' 
+          @click='choiceAddress(item)'>
+          <div class='adLeft'>
+            <div class='flex adList'>
+              <div class=''>
+                <img 
+                  src='../assets/images/homepage/home_man_icon@2x.png' 
+                  mode='widthFix' >
+              </div>
+              <div class='ml10 flex '>
+                <div 
+                  class='c3 font16 hidden' 
+                  style='max-width:330px;'>{{ item.contactName }}</div>
+                <span class='mesTel'>{{ item.contactTel }}</span>
+              </div>
             </div>
+            <div class='flex adList mt5'>
+              <div>
+                <img 
+                  src='../assets/images/homepage/home_local_icon@2x.png' 
+                  mode='widthFix' >
+              </div>
+              <div class='ml10'>
+                <span
+                  class='mesAdr hidden2 font13 c6'>{{ item.province }}{{ item.city }}{{ item.district }}{{ item.location }}{{ item.address }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='operationbox flex Between mt5'>
+          <div 
+            class='operchoose' 
+            catchtap='ToDefault'>
+            <van-radio 
+              :name="item" 
+              @click='radioChecked'>
+              <div class='ml3 font14 c6'>设为默认地址</div>
+            </van-radio>
+          </div>
+
+          <div 
+            class='operdo flex' 
+            wx:else>
+            <div 
+              catchtap='thisss' 
+              class="font12" 
+              @click='editAddress(item.id)'>编辑</div>
+            <img 
+              src='../assets/images/homepage/del-icon@2x.png' 
+              class='delAddress'
+              @click='delAddress(item.id)' >
+          </div>
+        </div>
+      </div>
 
 
-        </van-radio-group>
-        <div style="height: 42px;"></div>
-        <router-link :to='{path:"/addAddress"}'>
-        <van-button type="info" class="addAddress">新增地址</van-button></router-link>
-    </div>
+    </van-radio-group>
+    <div style="height: 42px;"/>
+    <router-link :to='{path:"/addAddress"}'>
+      <van-button 
+        type="info" 
+        class="addAddress">新增地址</van-button></router-link>
+  </div>
 </template>
 <script>
     import HeaderView from '../components/header';
@@ -75,8 +99,7 @@
             [Dialog.name]: Dialog
         },
         created() {
-            this.getList();
-           
+            this.getList();      
 
         },
         methods: {
@@ -140,7 +163,7 @@
             },
             editAddress(id){
                 console.log(id);
-                this.$router.push({name:'addAddress',params:{id:id}})
+                this.$router.push({path:'/addAddress',query:{id:id}})
             }                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         }
     }

@@ -1,65 +1,92 @@
 <template>
-    <div>
-        <Header-view :headerMsg='headerMsg' />
-        <div class="van-address-edit">
-            <div class="van-cell van-field">
-                <div class="van-cell__title van-field__label"><span>收货人</span></div>
-                <div class="van-cell__value">
-                    <div class="van-field__body"><input type="text" placeholder="收货人姓名" class="van-field__control"
-                            v-model="obj.name" @blur='getMes'>
-                    </div>
-                </div>
-            </div>
-            <div class="van-cell van-field">
-                <div class="van-cell__title van-field__label"><span>联系电话</span></div>
-                <div class="van-cell__value">
-                    <div class="van-field__body"><input type="tel" placeholder="收货人手机号" class="van-field__control"
-                            v-model="obj.tel" @blur='getMes'>
-                    </div>
-                </div>
-            </div>
-
-            <div class="van-cell van-field ">
-                <router-link :to='{path:"/map"}' class="flex Between " style="width: 100%">
-                    <div class="van-cell__title van-field__label"><span class="c3">地址定位</span></div>
-                    <div class="van-cell__value">
-                        <div class="van-field__body">
-                            <input type="tel" maxlength="6" placeholder="地址定位" class="van-field__control"
-                                v-model='map.title'>
-                        </div>
-                    </div>
-                    <img src="../assets/images/homepage/home_smallmore_icon@2x.png" alt="" width="10"
-                        style="float: right" />
-                </router-link>
-            </div>
-
-
-            <div class="van-cell van-address-edit-detail">
-                <div class="van-cell__value van-cell__value--alone">
-                    <div class="van-cell van-field">
-                        <div class="van-cell__title van-field__label"><span>详细地址</span></div>
-                        <div class="van-cell__value">
-                            <div class="van-field__body"><textarea rows="1" maxlength="200" placeholder="街道门牌、楼层房间号等信息"
-                                    class="van-field__control" style="height: 24px;" v-model="obj.address"
-                                    @blur='getMes'></textarea></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="van-cell van-cell--center van-switch-cell">
-                <div class="van-cell__title">
-                    <van-checkbox v-model="obj.isdefault" checked-color="#1989fa" @change='getMes'>设为默认地址</van-checkbox>
-                </div>
-            </div>
-            <div class="van-address-edit__buttons"><button
-                    class="van-button van-button--info van-button--normal van-button--block" @click='addAddress'><span
-                        class="van-button__text">保存</span></button><button
-                    class="van-button van-button--default van-button--normal van-button--block"><span
-                        class="van-button__text">删除</span></button></div>
+  <div>
+    <Header-view :header-msg='headerMsg' />
+    <div class="van-address-edit">
+      <div class="van-cell van-field">
+        <div class="van-cell__title van-field__label"><span>收货人</span></div>
+        <div class="van-cell__value">
+          <div class="van-field__body"><input 
+            type="text" 
+            placeholder="收货人姓名" 
+            class="van-field__control"
+            v-model="obj.name" 
+            @blur='getMes'>
+          </div>
         </div>
+      </div>
+      <div class="van-cell van-field">
+        <div class="van-cell__title van-field__label"><span>联系电话</span></div>
+        <div class="van-cell__value">
+          <div class="van-field__body"><input 
+            type="tel" 
+            placeholder="收货人手机号" 
+            class="van-field__control"
+            v-model="obj.tel" 
+            @blur='getMes'>
+          </div>
+        </div>
+      </div>
 
+      <div class="van-cell van-field ">
+        <router-link 
+          :to='{path:"/map"}' 
+          class="flex Between " 
+          style="width: 100%">
+          <div class="van-cell__title van-field__label"><span class="c3">地址定位</span></div>
+          <div class="van-cell__value">
+            <div class="van-field__body">
+              <input 
+                type="tel" 
+                maxlength="6" 
+                placeholder="地址定位" 
+                class="van-field__control"
+                v-model='map.title'>
+            </div>
+          </div>
+          <img 
+            src="../assets/images/homepage/home_smallmore_icon@2x.png" 
+            alt="" 
+            width="10"
+            style="float: right" >
+        </router-link>
+      </div>
+
+
+      <div class="van-cell van-address-edit-detail">
+        <div class="van-cell__value van-cell__value--alone">
+          <div class="van-cell van-field">
+            <div class="van-cell__title van-field__label"><span>详细地址</span></div>
+            <div class="van-cell__value">
+              <div class="van-field__body"><textarea 
+                rows="1" 
+                maxlength="200" 
+                placeholder="街道门牌、楼层房间号等信息"
+                class="van-field__control" 
+                style="height: 24px;" 
+                v-model="obj.address"
+                @blur='getMes'/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="van-cell van-cell--center van-switch-cell">
+        <div class="van-cell__title">
+          <van-checkbox 
+            v-model="obj.isdefault" 
+            checked-color="#1989fa" 
+            @change='getMes'>设为默认地址</van-checkbox>
+        </div>
+      </div>
+      <div class="van-address-edit__buttons"><button
+        class="van-button van-button--info van-button--normal van-button--block" 
+        @click='addAddress'><span
+          class="van-button__text">保存</span></button><button
+            class="van-button van-button--default van-button--normal van-button--block"><span
+              class="van-button__text">删除</span></button></div>
     </div>
+
+  </div>
 </template>
 <script>
 
@@ -82,7 +109,7 @@
                 searchResult: [],
                 map: JSON.parse(localStorage.getItem('map')) || '', //选择的地图信息                
                 mid: JSON.parse(localStorage.getItem('user'))[0].id,  //mid
-                addressId: this.$route.params.id || '', //地址id
+                addressId: this.$route.query.id || '', //地址id
                 // obj:{
                 //     name:this.$store.state.addressObj.name||'',
                 //     tel:this.$store.state.addressObj.tel||'',

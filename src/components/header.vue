@@ -1,11 +1,16 @@
 <template>
-    <div>
-        <header id='header'>
-            <van-nav-bar :title="headerMsg.title" :left-text="headerMsg.left" :left-arrow='headerMsg.lefticon'
-                :right-text="headerMsg.right" @click-left="onClickLeft" @click-right="onClickRight" />
-        </header>
-        <div style="height: 46px;"></div>
-    </div>
+  <div>
+    <header id='header'>
+      <van-nav-bar 
+        :title="headerMsg.title" 
+        :left-text="headerMsg.left" 
+        :left-arrow='headerMsg.lefticon'
+        :right-text="headerMsg.right" 
+        @click-left="onClickLeft" 
+        @click-right="onClickRight" />
+    </header>
+    <div style="height: 46px;"/>
+  </div>
 </template>
 <script>
     import { NavBar,Dialog  } from 'vant';
@@ -14,6 +19,12 @@
             [NavBar.name]: NavBar,
         },
         props: ['headerMsg'],
+        // props:{
+        //     headerMsg:{
+        //         type: String,
+        //         default: ''
+        //     }
+        // },
         created() {
             // console.log(this.headerMsg)
         },

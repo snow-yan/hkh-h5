@@ -1,25 +1,37 @@
 <template>
-    <div class="Map">
-        <van-search v-model="value" placeholder="请输入搜索关键词" show-action shape="round" @search="onSearch" id='suggestId'>
-            <div slot="action" @click='onSearch'>搜索</div>
-        </van-search>
-        <div id="allmap"></div>
-        <ul id="r-result">
+  <div class="Map">
+    <van-search 
+      v-model="value" 
+      placeholder="请输入搜索关键词" 
+      show-action 
+      shape="round" 
+      @search="onSearch" 
+      id='suggestId'>
+      <div 
+        slot="action" 
+        @click='onSearch'>搜索</div>
+    </van-search>
+    <div id="allmap"/>
+    <ul id="r-result">
 
-            <li class="borderBottom mt5 pl10" style="height: 60px;" v-for="(item,index) in html"
-                @click="goAddress(item)" :key="index">
+      <li 
+        class="borderBottom mt5 pl10" 
+        style="height: 60px;" 
+        v-for="(item,index) in html"
+        @click="goAddress(item)" 
+        :key="index">
 
-                <div><span class="c6 font16 hidden">{{item.title}}</span></div>
-                <div class="c6 font12 mt5 hidden">
-                    {{item.address}}
-                </div>
-            </li>
+        <div><span class="c6 font16 hidden">{{ item.title }}</span></div>
+        <div class="c6 font12 mt5 hidden">
+          {{ item.address }}
+        </div>
+      </li>
 
-        </ul>
+    </ul>
 
 
 
-    </div>
+  </div>
 </template>
 
 <script>
@@ -42,6 +54,7 @@
             }
         },
         created() {
+            console.log(1)
             this.onSearch()
         },
         mounted() {
@@ -51,7 +64,7 @@
         },
         props: {
             province: {
-                type: String
+                type: String,
             },
             name: {
                 type: String
@@ -68,17 +81,14 @@
         },
         methods: {
             onSearch() {
-               
 
                 this.html = [];
-        
+
                 var searchVal = this.value ? this.value : '';
                 MP(this.ak).then(BMap => {
                     var self = this;
-                    var map = new BMap.Map("allmap");           // 创建Map实例                  
-
+                    var map = new BMap.Map("allmap");           // 创建Map实例 
                     let geolocation = new BMap.Geolocation()
-
                     geolocation.enableSDKLocation(); //允许SDK辅助
                     geolocation.getCurrentPosition(function (r) {
 
@@ -96,20 +106,15 @@
                             map.addOverlay(circle);
                             var options = {
                                 onSearchComplete: function (results) {
-                                    // 判断状态是否正确-
-                                    // if (local.getStatus() == 0) {
-                                      //  console.log(results, 'results')
-                                        results.map(item => {
-                                            item.Ar.map(i => {
-                                                self.html.push(i)
-                                            })
+
+                                    results.map(item => {
+                                        item.Ar.map(i => {
+                                            self.html.push(i)
                                         })
+                                        
+                                    })
 
-                                       // console.log(self.html, 'html')
 
-
-
-                                    // }
                                 }
                             };
                             var local = new BMap.LocalSearch(map, options);
@@ -121,11 +126,8 @@
                                 local.searchNearby(myKeys, r.point, 500);
                             }
 
-
-
                         } else {
-
-                            alert('定位失败：' + this.getStatus());
+                            this.$toast('定位失败：' + this.getStatus())
 
                         }
                     })
@@ -136,12 +138,11 @@
             },
             goAddress(item) {
                 let obj = {
-                  
                     title: item.title,
                     city: item.city,
                     province: item.province,
                     address: item.address,
-                    place:item.point.lng+'_'+item.point.lat
+                    place: item.point.lng + '_' + item.point.lat
                 }
 
                 MP(this.ak).then(BMap => {
@@ -155,13 +156,10 @@
                     })
                 })
 
-                // this.$emit('maps',obj);
-
             }
         }
     }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
     .van-search {
         height: 8vh;

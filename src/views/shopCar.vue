@@ -1,78 +1,119 @@
 <template>
-    <div>
-        <Header-view :headerMsg='headerMsg' />
-        <div v-if='!isEmpty'>
+  <div>
+    <Header-view :header-msg='headerMsg' />
+    <div v-if='!isEmpty'>
 
-            <div class=' p30'>
-                <van-checkbox-group v-model="listChecked" @change='changes'>
-                    <template v-for='(item,index) in list'>
+      <div class=' p30'>
+        <van-checkbox-group 
+          v-model="listChecked" 
+          @change='changes'>
+          <template v-for='(item,index) in list'>
 
-                        <div class='shopcontent white mb5 flex' :key='index'>
-                            <div>
-                                <van-checkbox :key="item.isCheck" :name="item" :disabled='item.onshelves=="False"' />
-                            </div>
-                            <div class='shopcontentr'>
-                                <div class='sconrightt flex Between'>
-                                    <!-- <router-link :to='{name:"detail",params:{pid:item.pid,cid:item.cid,mid:mid}}'> -->
-                                    <div class='imUrl' @click='goDetails(item.pid,item.cid)'>
-                                        <img :src="item.url" />
-                                        <div v-if='item.onshelves == "True"'></div>
-                                        <div v-else class="state"> 商品已下架</div>
-                                    </div>
-                                    <!-- </router-link> -->
-                                    <div class='sconrighttr flex Between column'>
-                                        <div class='textespli' @click='goDetails(item.pid,item.cid)'>{{item.saleName}}
-                                        </div>
-                                        <div class='textlabel hidden' @click='goDetails(item.pid,item.cid)'>
-                                            {{item.keys}}</div>
-                                        <div class='textnum mt5 flex Between'>
-                                            <div class='color'>￥{{item.xsprice}}</div>
-                                            <div class='waterNumber flex'>
-                                                <div class='flex Center' @click='reduceNum(index)'>
-                                                    <img src='../assets/images/homepage/water_icon_reduce@2x.png' />
-                                                </div>
-                                                <div class='watN'>
-                                                    <input @blur='inputNum(index)' v-model='item.nums' min="0"
-                                                        maxlength="3" type="number">
-
-                                                </div>
-                                                <div class='flex Center' @click='addNum(index)'>
-
-                                                    <img src='../assets/images/homepage/water_icon_add@2x.png' />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class='listrb'>
-                                    <div>{{item.canusejf}}</div>
-                                </div>
-                            </div>
+            <div 
+              class='shopcontent white mb5 flex' 
+              :key='index'>
+              <div>
+                <van-checkbox 
+                  :key="item.isCheck" 
+                  :name="item" 
+                  :disabled='item.onshelves=="False"' />
+              </div>
+              <div class='shopcontentr'>
+                <div class='sconrightt flex Between'>
+                  <div 
+                    class='imUrl' 
+                    @click='goDetails(item.pid,item.cid)'>
+                    <img :src="item.url" >
+                    <div v-if='item.onshelves == "True"'/>
+                    <div 
+                      v-else 
+                      class="state"> 商品已下架</div>
+                  </div>
+                  <div class='sconrighttr flex Between column'>
+                    <div 
+                      class='textespli' 
+                      @click='goDetails(item.pid,item.cid)'>{{ item.saleName }}
+                    </div>
+                    <div 
+                      class='textlabel hidden' 
+                      @click='goDetails(item.pid,item.cid)'>
+                      {{ item.keys }}</div>
+                    <div class='textnum mt5 flex Between'>
+                      <div class='color'>￥{{ item.xsprice }}</div>
+                      <div class='waterNumber flex'>
+                        <div 
+                          class='flex Center' 
+                          @click='reduceNum(index)'>
+                          <img src='../assets/images/homepage/water_icon_reduce@2x.png' >
                         </div>
+                        <div class='watN'>
+                          <input 
+                            @blur='inputNum(index)' 
+                            v-model='item.nums' 
+                            min="0"
+                            maxlength="3" 
+                            type="number">
 
-                        <div v-for='(itm,idx) in item.freeGoods' :key='idx'>
-                            <div style='width:20%'>
-                                <img :src='itm.zpurl?itm.zpurl:"../assets/images/homepage/thegift@2x.png"' />
-                            </div>
-
-                            <div style='width:60%' class='hidden'>
-                                {{itm.zpcomName}}
-                            </div>
-                            <div style='width:20%;text-align:right'>
-                                X{{itm.fnum}}
-                            </div>
                         </div>
-                        <!-- </div> -->
+                        <div 
+                          class='flex Center' 
+                          @click='addNum(index)'>
 
-                    </template>
-                </van-checkbox-group>
+                          <img src='../assets/images/homepage/water_icon_add@2x.png' >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class='listrb'>
+                  <div>{{ item.canusejf }}</div>
+                </div>
+              </div>
             </div>
-            <div style="height:50px"></div>
-            <van-submit-bar :price="total" button-text="提交订单" @submit="onSubmit">
-                <van-checkbox v-model="checked" class="allCheck" @click='changeAll'>全选</van-checkbox>
-            </van-submit-bar>
-        </div>
+
+            <div 
+              v-for='(itm,idx) in item.freeGoods' 
+              :key='idx'>
+              <div style='width:20%'>
+                <img :src='itm.zpurl?itm.zpurl:"../assets/images/homepage/thegift@2x.png"' >
+              </div>
+
+              <div 
+                style='width:60%' 
+                class='hidden'>
+                {{ itm.zpcomName }}
+              </div>
+              <div style='width:20%;text-align:right'>
+                X{{ itm.fnum }}
+              </div>
+            </div>
+            <!-- </div> -->
+
+          </template>
+        </van-checkbox-group>
+      </div>
+      <div style="height:50px"/>
+      <van-submit-bar 
+        :price="total" 
+        button-text="提交订单" 
+        @submit="onSubmit">
+        <van-checkbox 
+          v-model="checked" 
+          class="allCheck" 
+          @click='changeAll'>全选</van-checkbox>
+      </van-submit-bar>
     </div>
+    <div 
+      v-else 
+      class="flex Center column">
+      <img 
+        src="../assets/images/homepage/Empty-pic@2x.png" 
+        class=" mt50" 
+        alt="" 
+        width="200">
+      <div class=" mt20">购物车是空的</div> 
+    </div>
+  </div>
 
 </template>
 <script>
@@ -126,7 +167,7 @@
                 const detailObj = { cid: cid, pid: pid, mid: this.mid };
                 localStorage.setItem('detailId', JSON.stringify(detailObj))
               //  console.log(detailObj)
-                this.$router.push({ name: 'detail', params: detailObj })
+                this.$router.push({ path: '/detail', query: detailObj })
             },
             // 选择
             changes() {

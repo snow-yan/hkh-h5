@@ -5,8 +5,12 @@ function resolve(dir) {
 }
 module.exports = {
     // 区分打包环境与开发环境   
-    publicPath: process.env.NODE_ENV === 'production' ? "" : './',  //  用用程序默认部署位置，‘/’根目录，存放子目录ex：‘/web/’
-    outputDir: 'dist',  // 输出文件目录
+    //  用用程序默认部署位置，‘/’根目录，存放子目录ex：‘/web/’
+    publicPath: process.env.NODE_ENV === 'production' ? "" : './',
+
+    // 输出文件目录
+    outputDir: 'dist',
+
     devServer: {
         proxy: {
             '/api': {
@@ -20,7 +24,7 @@ module.exports = {
             }
         }
     },
-    
+
     css: {
         loaderOptions: {
             sass: {
@@ -28,6 +32,7 @@ module.exports = {
             }
         }
     },
+
     productionSourceMap: false,
-  
+    lintOnSave: false
 };

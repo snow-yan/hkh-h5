@@ -1,10 +1,14 @@
 <template>
-    <div>
-        <Header-view :headerMsg='headerMsg' />
-        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <Order-mes :list='orderList' />
-        </van-list>
-    </div>
+  <div>
+    <Header-view :header-msg='headerMsg' />
+    <van-list 
+      v-model="loading" 
+      :finished="finished" 
+      finished-text="没有更多了" 
+      @load="onLoad">
+      <Order-mes :list='orderList' />
+    </van-list>
+  </div>
 </template>
 <script>
     import HeaderView from '../components/header'
@@ -52,10 +56,8 @@
                         msg.map(item => {
                             item.OrderProductList = JSON.parse(item.OrderProductList);
                             this.orderList.push(item);
-
-
                         })
-                        this.count = res.msg.DataCount;
+                        this.count = res.msg.DataCount; 
 
                     }
                 })

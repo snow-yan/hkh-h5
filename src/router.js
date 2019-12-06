@@ -11,6 +11,8 @@ import Router from 'vue-router'
 // import Maps from './views/choiseMap.vue'
 // import History from './views/historyOrder.vue'
 
+
+
 const Home = () => import('./views/Home.vue')                      //首页 1
 const Detail = () => import('./views/detail.vue')                  //商品详情 2
 const Car = () => import('./views/shopCar.vue')                    //购物车 3
@@ -19,15 +21,14 @@ const AddList = () => import('./views/addAddress.vue')             //添加新�
 const OrderDetail = () => import('./views/orderDetail.vue')        //结算 6
 const Maps = () => import('./views/choiseMap.vue')                 //地址选择地图 7
 const History = () => import('./views/historyOrder.vue')           //历史订单 8
+
 const Getcode = () => import('./views/logins/getCode.vue')         //获取验证码 9
-
-
 const Login = () => import('./views/logins/login.vue')             //登录 10
 const Checkregist = () => import('./views/logins/checkRegist.vue') //验证图片验证码 11
 const SetPass = () => import('./views/logins/setPass.vue') //获取手机验证码 12
 const ChoiseRegist = () => import('./views/logins/choiseRegist.vue') //重新注册还是登录 13
 
-const OrderSuc = () => import('./views/orderSuc.vue')         //订单成功返回页面 14
+const OrderSuc = () => import('./views/orderSuc.vue')           //历史订单 8
 
 
 Vue.use(Router)
