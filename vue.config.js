@@ -14,12 +14,12 @@ module.exports = {
                 secure: false,
                 changeOrigin: true,//允许跨域
                 pathRewrite: {
-                    '^/api': ''
+                    '^/api': 'https://test.hkhsc.com'
                 }
             }
         }
     },
-    
+
     css: {
         loaderOptions: {
             sass: {
@@ -28,5 +28,5 @@ module.exports = {
         }
     },
     productionSourceMap: false,
-  
+
 };

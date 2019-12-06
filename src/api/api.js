@@ -1,6 +1,6 @@
 import { post } from '../axios.js';//导入axios实例文件中方法
-// const baseUrl=process.env.NODE_ENV=='production'?'':'/api'
-const baseUrl = 'https://test.hkhsc.com'
+const baseUrl = process.env.NODE_ENV == 'production' ? '' : '/api'
+// const baseUrl = 'https://test.hkhsc.com'
 import qs from 'qs';
 
 export const getHomeMes = obj => post(`${baseUrl}/shop/goods/shopcar.ashx`, qs.stringify(obj));  //获取首页地址以及商品列表、购物车列表
